@@ -1,0 +1,70 @@
+$theme-colors: (
+  "darkBlue": hsl(209, 23%, 22%),
+  "veryDarkBlueBg": hsl(207, 26%, 17%),
+  "veryDarkBlueText": hsl(200, 15%, 8%),
+  "darkGray": hsl(0, 0%, 52%),
+  "veryLightGray": hsl(0, 0%, 98%),
+  "white": hsl(0, 0%, 100%),
+);
+
+// Then import Bootstrap an BootstrapVue SCSS files (order is important)
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "node_modules/bootstrap-vue/src/index.scss";
+$color-scheme: (
+  (light, var(--veryDarkBlueText), var(--veryLightGray), var(--white)),
+  (dark, var(--white), var(--veryDarkBlueBg), var(--darkBlue))
+);
+@mixin theme($name, $color, $bodyBgColor, $element) {
+  body.theme-#{$name} {
+    background-color: $bodyBgColor;
+    color: $color;
+    .borderButtonLink {
+      background-color: $element;
+      color: $color;
+    }
+    .navbar {
+      background-color: $element;
+    }
+    .slectRegionCol {
+      color: $color;
+    }
+    .custom-select,
+    .themeCard {
+      background-color: $element;
+      color: $color;
+    }
+    .countryGrid {
+      a {
+        color: $color;
+      }
+
+      .card {
+        border-color: $element;
+        background-color: $element;
+      }
+    }
+  }
+}
+
+@each $name, $color, $bodyBgColor, $element in $color-scheme {
+  @include theme($name, $color, $bodyBgColor, $element);
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+.font-16 {
+  font-size: 16px;
+}
+.font-14 {
+  font-size: 14px;
+}
+.font-12 {
+  font-size: 12px;
+}
+.font-10 {
+  font-size: 10px;
+}
+.pointer {
+  cursor: pointer;
+}
