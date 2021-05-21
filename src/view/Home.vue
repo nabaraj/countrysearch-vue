@@ -6,11 +6,18 @@
         <b-spinner />
       </div>
       <div v-else>
-        <b-row class="mx-n4">
+        <b-row class="mx-n4 filterTool">
           <b-col cols="12" sm="4" class="mb-4 px-4">
           <div class="position-relative">
             <b-icon-search class="position-absolute searchIcon"/>
-            <b-input type="search" v-model="searchText" class="pl-5 themeFormControll shadow-sm"  placeholder="Search fo a country"/>
+            <b-input 
+              type="search" 
+              name="searchCountry" 
+              v-model="searchText" 
+              class="pl-5 themeFormControll shadow-sm "  
+              placeholder="Search fo a country"
+
+            />
           </div>
         </b-col>
         <b-col cols="12" sm="4" class="mb-4 ml-auto px-4 d-flex position-relative slectRegionCol">
@@ -19,6 +26,7 @@
             v-model="selected"
             class="shadow-sm themeFormControll"
             :options="regionList"
+            name="filterRegion"
           />
         </b-col>
         </b-row>
@@ -41,7 +49,7 @@
               style="max-width: 20rem"
               class="mb-2 shadow-sm"
             >
-              <b-card-text>
+              <div>
                 <ul class="list-unstyled font-14">
                   <li>
                     <span class="font-weight-bold pr-1">Population:</span
@@ -56,7 +64,7 @@
                     >{{ country.capital }}
                   </li>
                 </ul>
-              </b-card-text>
+              </div>
             </b-card>
           </router-link>
         </b-col>
@@ -131,7 +139,7 @@ export default {
     text-decoration: none;
   }
   .card-img-top {
-    height: 200px;
+    height: 130px;
     width: 100%;
     object-fit: cover;
   }
@@ -150,5 +158,10 @@ export default {
   top:50%;
   left:13px;
   transform: translateY(-50%);
+}
+.filterTool{
+  input, select{
+    height: 50px;
+  }
 }
 </style>

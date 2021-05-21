@@ -3,7 +3,7 @@
     <Header />
     <b-container>
       <router-link to="/"
-        ><b-button class="mb-4 borderButtonLink themeFormControll"
+        ><b-button class="mb-4 borderButtonLink shadow-sm themeFormControll"
           ><b-icon-arrow-left /> Back</b-button
         ></router-link
       >
