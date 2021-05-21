@@ -11,6 +11,7 @@
           <div class="position-relative">
             <b-icon-search class="position-absolute searchIcon"/>
             <b-input 
+              aria-label="searc by country name"
               type="search" 
               name="searchCountry" 
               v-model="searchText" 
@@ -23,6 +24,7 @@
         <b-col cols="12" sm="4" class="mb-4 ml-auto px-4 d-flex position-relative slectRegionCol">
           <b-icon-chevron-down class="selectArrow" />
           <b-select
+            aria-label="filter by region"
             v-model="selected"
             class="shadow-sm themeFormControll"
             :options="regionList"
@@ -139,7 +141,7 @@ export default {
     text-decoration: none;
   }
   .card-img-top {
-    height: 130px;
+    height: 150px;
     width: 100%;
     object-fit: cover;
   }
