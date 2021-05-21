@@ -5,24 +5,33 @@
       <div class="text-center" v-if="countries === 'loading'">
         <b-spinner />
       </div>
-      <b-row v-else>
-        <b-col cols="6"></b-col>
-        <b-col cols="6" class="mb-4 d-flex position-relative slectRegionCol">
+      <div v-else>
+        <b-row class="mx-n4">
+          <b-col cols="12" sm="4" class="mb-4 px-4">
+          <div class="position-relative">
+            <b-icon-search class="position-absolute searchIcon"/>
+            <b-input type="search" v-model="searchText" class="pl-5 themeFormControll shadow-sm"  placeholder="Search fo a country"/>
+          </div>
+        </b-col>
+        <b-col cols="12" sm="4" class="mb-4 ml-auto px-4 d-flex position-relative slectRegionCol">
           <b-icon-chevron-down class="selectArrow" />
           <b-select
             v-model="selected"
-            class="w-50 ml-auto"
+            class="shadow-sm themeFormControll"
             :options="regionList"
           />
         </b-col>
+        </b-row>
+      <b-row class="mx-n4">
+        
         <b-col
           cols="12"
           sm="3"
           v-for="country in filteredList"
           v-bind:key="country.alpha2Code"
-          class="countryGrid"
+          class="countryGrid px-4 py-3"
         >
-          <router-link :to="createLink(country.alpha3Code)">
+          <router-link :to="`/details/${country.alpha3Code}`">
             <b-card
               :title="country.name"
               :img-src="country.flag"
@@ -30,7 +39,7 @@
               img-top
               tag="article"
               style="max-width: 20rem"
-              class="mb-2"
+              class="mb-2 shadow-sm"
             >
               <b-card-text>
                 <ul class="list-unstyled font-14">
@@ -52,6 +61,7 @@
           </router-link>
         </b-col>
       </b-row>
+      </div>
     </b-container>
   </div>
 </template>
@@ -64,6 +74,7 @@ export default {
   data: function () {
     return {
       selected: null,
+      searchText:''
     };
   },
   components: {
@@ -75,23 +86,28 @@ export default {
       regionList: (state) => state.regionList,
     }),
     filteredList: function () {
-      if (this.countries !== "loading" && !this.selected) {
-        return this.countries;
+      if (this.countries === "loading"){
+        return []
       }
-      let countryFiltred = this.countries.filter((item) => {
-        console.log(item.region);
-        return item.region === this.selected;
-      });
-      console.log(countryFiltred);
+      let countryFiltred = this.countries;
+
+      if(this.searchText){
+       countryFiltred = this.countries.filter((item)=>{
+          return item.name.toLowerCase().includes(this.searchText.toLowerCase());
+        })
+      }
+      if(this.selected){
+        countryFiltred = countryFiltred.filter((item) => {
+          return item.region === this.selected;
+        });
+      }
+      
       return countryFiltred;
     },
   },
   watch: {},
   methods: {
-    ...mapActions(["getCountries"]),
-    createLink: function (name) {
-      return "/details/" + name;
-    },
+    ...mapActions(["getCountries"])
   },
   created: function () {
     if (this.countries === "loading") {
@@ -125,9 +141,14 @@ export default {
 }
 .selectArrow {
   position: absolute;
-  right: 27px;
+  right: 34px;
   top: 50%;
   pointer-events: none;
+  transform: translateY(-50%);
+}
+.searchIcon{
+  top:50%;
+  left:13px;
   transform: translateY(-50%);
 }
 </style>

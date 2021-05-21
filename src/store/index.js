@@ -47,7 +47,6 @@ export default new Vuex.Store({
       // });
     },
     changeTheme({ commit }, theme) {
-      console.log(theme);
       commit('updateTheme', theme)
     }
   }

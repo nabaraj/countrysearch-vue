@@ -17,18 +17,22 @@ $color-scheme: (
 @mixin theme($name, $color, $bodyBgColor, $element) {
   body.theme-#{$name} {
     background-color: $bodyBgColor;
-    color: $color;
-    .borderButtonLink {
-      background-color: $element;
       color: $color;
-    }
+      .borderButtonLink {
+        background-color: $element;
+        color: $color;
+      }
     .navbar {
       background-color: $element;
     }
     .slectRegionCol {
       color: $color;
     }
-    .custom-select,
+    .themeFormControll{
+      background-color: $element;
+      color: $color;
+      border:1px solid $bodyBgColor;
+    }
     .themeCard {
       background-color: $element;
       color: $color;

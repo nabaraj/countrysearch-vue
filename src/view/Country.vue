@@ -3,16 +3,19 @@
     <Header />
     <b-container>
       <router-link to="/"
-        ><b-button class="mb-4 borderButtonLink"
+        ><b-button class="mb-4 borderButtonLink themeFormControll"
           ><b-icon-arrow-left /> Back</b-button
         ></router-link
       >
+      <h3 v-if="getCountryDetails.length===0">
+        No match found
+      </h3>
       <div v-for="item in getCountryDetails" v-bind:key="item.name">
         <b-row>
-          <b-col cols="6">
+          <b-col cols="12" sm="6">
             <img :src="item.flag" alt="" class="img-fluid" />
           </b-col>
-          <b-col cols="6" class="p-4">
+          <b-col cols="12" sm="6" class="p-4">
             <h3 class="font-weight-bold">{{ item.name }}</h3>
             <b-row class="font-10">
               <b-col cols="6">
@@ -57,7 +60,7 @@
                   :to="country.alpha3Code"
                   v-for="country in borderCountries"
                   v-bind:key="country.name"
-                  class="btn borderButtonLink shadow-sm mx-2 px-2 py-1"
+                  class="btn borderButtonLink shadow-sm mx-2 px-2 py-1 mb-1 font-12"
                 >
                   {{ country.name }}
                 </router-link>
@@ -95,7 +98,6 @@ export default {
             this.borderCountries = [];
             this.getBorderCountries(item.borders);
           }
-
           return selected;
         });
       }
@@ -112,8 +114,6 @@ export default {
       return filtredArr.join(",");
     },
     getBorderCountries: function (borders) {
-      console.log(borders);
-
       this.countries.map((item) => {
         if (borders.includes(item.alpha3Code)) {
           this.borderCountries.push({
