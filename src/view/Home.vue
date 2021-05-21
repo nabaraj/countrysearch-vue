@@ -16,7 +16,7 @@
               name="searchCountry" 
               v-model="searchText" 
               class="pl-5 themeFormControll shadow-sm "  
-              placeholder="Search fo a country"
+              placeholder="Search for a country.."
 
             />
           </div>
