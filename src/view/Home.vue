@@ -7,7 +7,7 @@
       </div>
       <div v-else>
         <b-row class="mx-n4 filterTool">
-          <b-col cols="12" sm="4" class="mb-4 px-4">
+          <b-col cols="12" sm="3" class="mb-4 px-4">
           <div class="position-relative">
             <b-icon-search class="position-absolute searchIcon"/>
             <b-input 
@@ -21,7 +21,7 @@
             />
           </div>
         </b-col>
-        <b-col cols="12" sm="4" class="mb-4 ml-auto px-4 d-flex position-relative slectRegionCol">
+        <b-col cols="12" sm="3" class="mb-4 ml-auto px-4 d-flex position-relative slectRegionCol">
           <b-icon-chevron-down class="selectArrow" />
           <b-select
             aria-label="filter by region"
