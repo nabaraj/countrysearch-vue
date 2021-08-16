@@ -7,9 +7,7 @@
           ><b-icon-arrow-left /> Back</b-button
         ></router-link
       >
-      <h3 v-if="getCountryDetails.length===0">
-        No match found
-      </h3>
+      <h3 v-if="getCountryDetails.length === 0">No match found</h3>
       <div v-for="item in getCountryDetails" v-bind:key="item.name">
         <b-row>
           <b-col cols="12" sm="6">
@@ -60,7 +58,16 @@
                   :to="country.alpha3Code"
                   v-for="country in borderCountries"
                   v-bind:key="country.name"
-                  class="btn borderButtonLink shadow-sm mx-2 px-2 py-1 mb-1 font-12"
+                  class="
+                    btn
+                    borderButtonLink
+                    shadow-sm
+                    mx-2
+                    px-2
+                    py-1
+                    mb-1
+                    font-12
+                  "
                 >
                   {{ country.name }}
                 </router-link>
@@ -132,5 +139,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

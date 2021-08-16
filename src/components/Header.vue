@@ -3,9 +3,11 @@
     <div class="container py-3">
       <h1 class="font-16 font-weight-bold">Where in the world</h1>
       <div class="ml-auto pointer" @click="toggletheme">
-        <b-icon-moon v-if="theme === 'dark'" />
-        <b-icon-sun v-if="theme === 'light'" />
-        <span class="text-capitalize pl-1">{{ this.theme }} mode</span>
+        <b-icon-moon v-if="theme === 'light'" />
+        <b-icon-sun v-if="theme === 'dark'" />
+        <span class="text-capitalize pl-1"
+          >{{ this.theme === "light" ? "dark" : "light" }} mode</span
+        >
       </div>
     </div>
   </b-navbar>
@@ -38,5 +40,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
