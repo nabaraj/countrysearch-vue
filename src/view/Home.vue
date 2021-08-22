@@ -38,19 +38,20 @@
         <b-row class="mx-n4">
           <b-col
             cols="12"
-            sm="3"
+            sm="6"
+            md="4"
+            lg="3"
             v-for="country in filteredList"
             v-bind:key="country.alpha2Code"
-            class="countryGrid px-4 py-3"
+            class="countryGrid px-4 py-3 d-flex"
           >
-            <router-link :to="`/details/${country.alpha3Code}`">
+            <router-link :to="`/details/${country.alpha3Code}`" class="d-flex">
               <b-card
                 :title="country.name"
                 :img-src="country.flag"
                 :img-alt="country.name"
                 img-top
                 tag="article"
-                style="max-width: 20rem"
                 class="mb-2 shadow-sm"
               >
                 <div>
@@ -145,7 +146,7 @@ export default {
     text-decoration: none;
   }
   .card-img-top {
-    height: 150px;
+    // height: 150px;
     width: 100%;
     object-fit: cover;
   }

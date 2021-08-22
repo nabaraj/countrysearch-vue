@@ -2,7 +2,7 @@
   <b-navbar class="shadow-sm mb-4" sticky>
     <div class="container py-3">
       <h1 class="font-16 font-weight-bold">Where in the world</h1>
-      <div class="ml-auto pointer" @click="toggletheme">
+      <div class="ml-auto pointer" id="themeChanger" @click="toggletheme">
         <b-icon-moon v-if="theme === 'light'" />
         <b-icon-sun v-if="theme === 'dark'" />
         <span class="text-capitalize pl-1"
