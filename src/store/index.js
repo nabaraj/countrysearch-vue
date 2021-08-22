@@ -23,24 +23,16 @@ export default new Vuex.Store({
   actions: {
     getCountries({ commit }) {
       let url = "https://restcountries.eu/rest/v2/all";
-      // const activityRequestObject = {
-      //   url,
-      //   method: 'GET'
-      // };
       commit("updateCountries", "loading");
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
           commit("updateCountries", data);
-          let regionObject = {},
-            regionList = [];
+          let regionList = [];
           data.map((item) => {
-            if (!regionObject[item.region] && item.region) {
-              regionObject[item.region] = item.region;
+            if (item.region && !regionList.includes(item.region)) {
+              regionList.push(item.region);
             }
-          });
-          Object.keys(regionObject).map((item) => {
-            regionList.push({ value: item, text: item });
           });
           commit("updateRegionList", regionList);
         });
@@ -51,5 +43,4 @@ export default new Vuex.Store({
       commit("updateTheme", theme);
     },
   },
-  // },
 });
