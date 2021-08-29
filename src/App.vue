@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <b-overlay :show="updateExists" rounded="sm">
-      <router-view />
-      <template v-slot:overlay>
+    <!-- <b-overlay :show="updateExists" rounded="sm"> -->
+    <router-view />
+    <!-- <template v-slot:overlay>
         <div class="text-center">
           <b-icon icon="cloud-download" font-scale="3"></b-icon>
           <p id="cancel-label">New updates are available!</p>
@@ -15,8 +15,8 @@
             Refresh
           </b-button>
         </div>
-      </template>
-    </b-overlay>
+      </template> -->
+    <!-- </b-overlay> -->
   </div>
 </template>
 
