@@ -104,7 +104,9 @@ export default {
             console.log(getName, item);
             selected = item;
             this.borderCountries = [];
-            this.getBorderCountries(item.borders);
+            if( item.borders ){
+              this.getBorderCountries(item.borders);
+            }
           }
           return selected;
         });
@@ -123,7 +125,7 @@ export default {
     },
     getBorderCountries: function (borders) {
       this.countries.map((item) => {
-        if (borders.includes(item.alpha3Code)) {
+        if (borders && borders.includes(item.alpha3Code)) {
           this.borderCountries.push({
             name: item.name,
             alpha3Code: item.alpha3Code,
