@@ -22,7 +22,7 @@ export default new Vuex.Store({
   },
   actions: {
     getCountries({ commit }) {
-      let url = "https://restcountries.eu/rest/v2/all";
+      let url = "https://restcountries.com/v2/all";
       commit("updateCountries", "loading");
       fetch(url)
         .then((response) => response.json())

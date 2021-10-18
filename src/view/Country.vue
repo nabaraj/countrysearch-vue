@@ -15,7 +15,7 @@
           </b-col>
           <b-col cols="12" sm="6" class="p-4">
             <h3 class="font-weight-bold">{{ item.name }}</h3>
-            <b-row class="font-10">
+            <b-row class="font-11">
               <b-col cols="6">
                 <div class="pb-2">
                   <span class="font-weight-bold pr-1">Native Name:</span
@@ -101,6 +101,7 @@ export default {
         return this.countries.filter((item) => {
           let selected = "";
           if (item.alpha3Code === getName) {
+            console.log(getName, item);
             selected = item;
             this.borderCountries = [];
             this.getBorderCountries(item.borders);
